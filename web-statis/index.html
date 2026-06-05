@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #0b0f1a;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 80px;
+    }
+
+    header h2 {
+      color: #00c896;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px;
+    }
+
+    .hero-text {
+      max-width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 40px;
+    }
+
+    .hero-text span {
+      color: #00c896;
+    }
+
+    .hero-text button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid #00c896;
+      color: #00c896;
+      cursor: pointer;
+    }
+
+    .hero-image img {
+      width: 300px;
+      border-radius: 20px;
+    }
+
+    .section {
+      padding: 80px;
+    }
+
+    .skills span {
+      display: inline-block;
+      margin: 10px;
+      padding: 8px 12px;
+      background: #1a1f2e;
+      border-radius: 10px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      background: #1a1f2e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    @media(max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text {
+        max-width: 100%;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>MyCV</h2>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Hello,</h1>
+    <h1>I am <span>Merin Kharista Putri</span>,</h1>
+    <h2>2388010050</h2>
+    <h2>Front End Developer</h2>
+    <p>Saya adalah mahasiswa yang tertarik dalam pengembangan web.</p>
+    <button>Let's get in touch</button>
+  </div>
+
+  <div class="hero-image">
+    <img src="myfoto.jpg" alt="Foto Saya">
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2>About Me</h2>
+  <p>
+Saya adalah mahasiswa di bidang Informatika yang memiliki minat dalam pengembangan web, khususnya pada bagian front-end development. 
+Saya terbiasa menggunakan HTML, CSS, dan JavaScript untuk membangun tampilan website yang responsif dan user-friendly. 
+Selain itu, saya juga memiliki pengalaman dalam pengolahan data dan pembuatan model sederhana dalam machine learning.
+
+Saya senang mempelajari hal baru dan terus mengembangkan kemampuan saya melalui berbagai proyek dan tugas perkuliahan. 
+Dengan kemampuan yang saya miliki, saya berharap dapat menciptakan solusi digital yang bermanfaat dan menarik secara visual.
+</p>
+</section>
+
+<section id="skills" class="section skills">
+  <h2>Skills</h2>
+  <span>HTML</span>
+  <span>CSS</span>
+  <span>JavaScript</span>
+  <span>Python</span>
+</section>
+
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <div class="projects">
+
+  <div class="project-card">
+    <h3>Sistem Manajemen Barbershop</h3>
+    <p>
+      Website untuk melakukan pemesanan layanan cukur, baik di tempat maupun ke rumah, serta pengelolaan data oleh admin.
+    </p>
+  </div>
+
+  <div class="project-card">
+    <h3>Website Cleanify</h3>
+    <p>
+       Website layanan kebersihan yang dilengkapi dengan fitur pemesanan online, memungkinkan pengguna memilih layanan dan melakukan booking dengan mudah.
+    </p>
+  </div>
+
+  <div class="project-card">
+    <h3>Face Recognition System</h3>
+    <p>
+      Sistem pengenalan wajah berbasis webcam menggunakan metode LBPH dengan preprocessing Haar Cascade dan grayscale untuk meningkatkan akurasi deteksi.
+    </p>
+  </div>
+
+</div>
+</section>
+
+<section id="contact" class="section contact">
+    
+    <h2>Contact Me</h2>
+  <p>Email: merinkharista@gmail.com</p>
+  <h2>Dideploy oleh Merin Kharista Putri - 2388010050</h2>
+</section>
+
+</body>
+</html>
