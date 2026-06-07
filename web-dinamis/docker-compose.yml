@@ -1,0 +1,35 @@
+services:
+
+  db-webdinamis:
+    image: mariadb:lts
+    environment:
+      MARIADB_ROOT_PASSWORD: password!123
+      MARIADB_DATABASE: db_uas
+      MARIADB_USER: uas_merin
+      MARIADB_PASSWORD: merin123
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db_uas.sql:/docker-entrypoint-initdb.d/db_uas.sql:ro
+    restart: always
+
+  container-statis:
+    image: merinkharista/uas_2388010050_merin:latest
+    ports:
+      - "80:80"
+    restart: always
+
+  container-dinamis:
+    image: merinkharista/uas-web-dinamis:latest
+    ports:
+      - "3000:80"
+    restart: always
+    environment:
+      DB_HOST: db-webdinamis
+      DB_USER: uas_merin
+      DB_PASS: 12345
+      DB_NAME: db_uas
+    depends_on:
+      - db-webdinamis
+
+volumes:
+  db_data: {}

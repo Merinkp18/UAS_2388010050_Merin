@@ -1,0 +1,72 @@
+name: Deploy Web Dinamis to AWS EC2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web-dinamis/**'
+      - '.github/workflows/deploy-dinamis.yaml'
+
+jobs:
+  build-and-deploy-web-dinamis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./web-dinamis
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/uas-web-dinamis:latest
+
+  deploy-to-ec2:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy-web-dinamis
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Stop existing containers via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          script: |
+            docker rm -f container-dinamis || true
+            docker rm -f db-webdinamis || true
+
+      - name: Copy Compose file & SQL to EC2 via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          source: "web-dinamis/docker-compose.yaml,web-dinamis/db_uas.sql"
+          target: "/home/ubuntu/container-dinamis"
+          strip_components: 1
+
+      - name: Deploy via SSH and run docker compose
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          script: |
+            mkdir -p /home/ubuntu/container-dinamis
+            cd /home/ubuntu/container-dinamis
+            docker compose pull
+            docker compose up -d
