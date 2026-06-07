@@ -54,22 +54,9 @@ jobs:
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
-          source: "web-dinamis/docker-compose.yaml,web-dinamis/db/db_uas.sql"
+          source: "web-dinamis/docker-compose.yml,web-dinamis/db/db_uas.sql"
           target: "/home/ubuntu/container-dinamis"
           strip_components: 1
-
-      - name: Debug - cek isi folder EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USERNAME }}
-          key: ${{ secrets.AWS_PRIVATE_KEY }}
-          port: 22
-          script: |
-            echo "=== Isi /home/ubuntu/container-dinamis ==="
-            ls -la /home/ubuntu/container-dinamis/ || echo "FOLDER TIDAK ADA"
-            echo "=== Isi subfolder db ==="
-            ls -la /home/ubuntu/container-dinamis/db/ || echo "FOLDER DB TIDAK ADA"
 
       - name: Deploy via SSH and run docker compose
         uses: appleboy/ssh-action@v1.0.3
