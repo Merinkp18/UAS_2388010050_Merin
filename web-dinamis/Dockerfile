@@ -9,8 +9,9 @@ RUN a2enmod rewrite
 # Copy semua file ke dalam container
 COPY . /var/www/html/
 
-# Set permission folder uploads
-RUN chmod -R 755 /var/www/html/assets/uploads/
+# Buat folder uploads kalau belum ada, lalu set permission
+RUN mkdir -p /var/www/html/assets/uploads/produk \
+    && chmod -R 755 /var/www/html/assets/uploads/
 
 # Konfigurasi Apache AllowOverride
 RUN echo '<Directory /var/www/html>\n\
