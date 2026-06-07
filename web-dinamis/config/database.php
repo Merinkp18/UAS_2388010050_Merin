@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost";
+$host = "db-webdinamis";
 $user = "uas_merin";
 $pass = "merin123";
 $db   = "db_uas";
