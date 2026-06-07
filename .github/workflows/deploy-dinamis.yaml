@@ -54,7 +54,7 @@ jobs:
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
-          source: "web-dinamis/docker-compose.yaml,web-dinamis/db_uas.sql"
+          source: "web-dinamis/docker-compose.yaml,web-dinamis/db/db_uas.sql"
           target: "/home/ubuntu/container-dinamis"
           strip_components: 1
 
