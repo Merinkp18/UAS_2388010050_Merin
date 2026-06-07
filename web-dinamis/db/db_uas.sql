@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 07, 2026 at 02:28 AM
+-- Generation Time: Jun 07, 2026 at 12:02 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.30
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `nama_lengkap`, `email`, `password`) VALUES
-(1, 'admin', 'admin@optik.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
+(1, 'admin', 'admin@optik.com', '$2y$10$wO/ghaElSCs1p1x5RjGdeOBIUkq7WBxUK2hxeRLQGxP4iltkdRuQO');
 
 -- --------------------------------------------------------
 
@@ -279,6 +279,17 @@ CREATE TABLE `produk` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id`, `kategori_id`, `merek_id`, `nama`, `slug`, `deskripsi`, `material`, `bentuk_frame`, `jenis_lensa`, `harga`, `harga_coret`, `berat_gram`, `is_aktif`, `is_featured`, `terjual`, `rating_avg`, `rating_count`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Frame Titanium Premium', 'frame-titanium-premium', 'Frame kacamata berbahan titanium yang ringan dan nyaman digunakan sehari-hari.', NULL, NULL, NULL, 450000.00, NULL, NULL, 1, 0, 0, 0.00, 0, '2026-06-07 11:31:30', '2026-06-07 11:31:30'),
+(2, 2, 2, 'Kacamata Baca Plus', 'kacamata-baca-plus', 'Kacamata baca dengan lensa berkualitas tinggi untuk aktivitas membaca.', NULL, NULL, NULL, 150000.00, NULL, NULL, 1, 0, 0, 0.00, 0, '2026-06-07 11:31:30', '2026-06-07 11:31:30'),
+(3, 3, 3, 'Kacamata Hitam UV Protection', 'kacamata-hitam-uv-protection', 'Melindungi mata dari sinar UV dengan desain modern dan elegan.', NULL, NULL, NULL, 350000.00, NULL, NULL, 1, 0, 0, 0.00, 0, '2026-06-07 11:31:30', '2026-06-07 11:31:30'),
+(4, 5, 4, 'Lensa Minus Anti Radiasi', 'lensa-minus-anti-radiasi', 'Lensa minus dengan lapisan anti radiasi untuk penggunaan komputer.', NULL, NULL, NULL, 250000.00, NULL, NULL, 1, 0, 0, 0.00, 0, '2026-06-07 11:31:30', '2026-06-07 11:31:30'),
+(5, 6, 5, 'Softlens Daily Comfort', 'softlens-daily-comfort', 'Lensa kontak harian yang nyaman digunakan sepanjang hari.', NULL, NULL, NULL, 120000.00, NULL, NULL, 1, 0, 0, 0.00, 0, '2026-06-07 11:31:30', '2026-06-07 11:31:30');
 
 -- --------------------------------------------------------
 
@@ -540,7 +551,7 @@ ALTER TABLE `foto_produk`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
@@ -576,7 +587,7 @@ ALTER TABLE `pesanan`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ulasan`
