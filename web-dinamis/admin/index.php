@@ -167,9 +167,11 @@ body{
 
     <div class="form-group">
         <label>Password</label>
+
         <input
             type="password"
             name="password"
+            placeholder="password"
             required
         >
     </div>
